@@ -29,6 +29,12 @@ header = st.container()
 model = st.container()
 col1, col2 = st.columns(2)
 
+# Get the absolute path of the root directory
+root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+
+# Button to open the model page
+
+model_file_path = os.path.join(root_path, "best_model_efficient.pth")
 
 def load_model(model_path, model_name, num_classes):
     """loads a torch classification model
@@ -159,7 +165,7 @@ def main_loop(original_image, original_file_name):
     # Number of classes
     num_classes = len(tag_to_label.keys())
 
-    model = load_model('best_model_efficient.pth', 'efficientnet-b2', num_classes)
+    model = load_model(model_file_path, 'efficientnet-b2', num_classes)
 
 
     with torch.no_grad():

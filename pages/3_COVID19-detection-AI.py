@@ -62,15 +62,15 @@ with col5:
 
 
 
-st.title("Try Our AI Model")
+#st.title("Try Our AI Model")
 
 
 # Get the absolute path of the root directory
-root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+#root_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
 # Button to open the model page
-if st.button("Click Here To Try Our AI Model"):
-    model_file_path = os.path.join(root_path, "Detect_COVID19.py")
-    subprocess.Popen(["streamlit", "run", model_file_path])
+#if st.button("Click Here To Try Our AI Model"):
+#    model_file_path = os.path.join(root_path, "Detect_COVID19.py")
+#    subprocess.Popen(["streamlit", "run", model_file_path])
 
 
