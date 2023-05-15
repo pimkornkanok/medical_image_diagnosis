@@ -1,6 +1,5 @@
 """Create an Image Classification Web App using PyTorch and Streamlit."""
 # import libraries
-import cv2
 from PIL import Image
 import numpy as np
 import torch
@@ -160,7 +159,7 @@ def main_loop(original_image, original_file_name):
     )
 
     tag_to_label = json.load(open('labels.json'))
-    print("label tags", tag_to_label)
+    #print("label tags", tag_to_label)
     labels_to_names = {v: k for k, v in tag_to_label.items()}
     # Number of classes
     num_classes = len(tag_to_label.keys())
@@ -169,8 +168,7 @@ def main_loop(original_image, original_file_name):
 
 
     with torch.no_grad():
-        im2 = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
-        transformed = transform(image=im2)
+        transformed = transform(image=original_image)
         transformed_image = transformed["image"]
         input_network = transformed_image.to(device)
         output_network = model(input_network[None, ...])
@@ -181,7 +179,7 @@ def main_loop(original_image, original_file_name):
         )
         label = probabilities.argmax().item()
         displayed_label = labels_to_names[label]
-        print('Predicted label: ', displayed_label)
+        #print('Predicted label: ', displayed_label)
         # Create a list of class names
         # Create a DataFrame with class names and probabilities
         data = {
